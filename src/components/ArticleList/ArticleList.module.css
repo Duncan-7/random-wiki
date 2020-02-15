@@ -1,0 +1,13 @@
+ul {
+  list-style: none;
+  padding-left: 0;
+  outline: 1px solid #fff;
+  outline-offset: -1px;
+}
+
+li {
+  width: 100%;
+  padding: 8px 3px;
+  border-bottom: 1px solid #ECECEC;
+}
+

@@ -3,10 +3,12 @@ import ArticleList from '../../components/ArticleList/ArticleList';
 import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import axios from 'axios';
+import classes from './ListContainer.module.css';
 
 class ListContainer extends Component {
   state = {
-    articles: null
+    articles: null,
+    error: false
   }
 
   componentDidMount() {
@@ -19,10 +21,12 @@ class ListContainer extends Component {
         const articles = response.data.query.random;
         this.setState({
           articles: articles
-        })
+        });
       })
       .catch(error => {
-        console.log(error);
+        this.setState({
+          error: true
+        });
       })
   }
 
@@ -31,15 +35,21 @@ class ListContainer extends Component {
     let articleList = <Spinner />
     if (this.state.articles) {
       articleList = <ArticleList articles={this.state.articles} />
+    };
+    if (this.state.error) {
+      articleList = <p>Error loading articles, please try again</p>
     }
     return (
       <div>
+        <h2 className={classes.Centered}>Random Wiki Generator</h2>
         {articleList}
-        <Button
-          btnType="Neutral"
-          onClick={this.loadArticles} >
-          Reload Articles
+        <div className={classes.Centered}>
+          <Button
+            btnType="Neutral"
+            onClick={this.loadArticles} >
+            Reload Articles
         </Button>
+        </div>
       </div>
     )
   }

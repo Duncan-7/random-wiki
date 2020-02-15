@@ -1,0 +1,9 @@
+.ArticleLink {
+  color: black;
+  text-decoration: none;
+}
+
+.ArticleLink:hover,
+.ArticleLink:active {
+  color: #027BCE;
+}
