@@ -16,7 +16,7 @@ class ListContainer extends Component {
   }
 
   loadArticles = () => {
-    axios.get('https://en.wikipedia.org/w/api.php?action=query&list=random&format=json&rnnamespace=0&rnlimit=10')
+    axios.get('https://en.wikipedia.org/w/api.php?action=query&list=random&format=json&rnnamespace=0&rnlimit=10&origin=*')
       .then(response => {
         const articles = response.data.query.random;
         this.setState({
